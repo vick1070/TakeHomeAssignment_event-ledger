@@ -6,6 +6,7 @@ This project demonstrates a distributed microservice-style architecture using Sp
 
 Services:
 - account-service
+- event-service
 - event-gateway
 
 The gateway forwards requests to downstream services and demonstrates service isolation and API communication.
@@ -19,9 +20,8 @@ Client
  ↓
 event-gateway (8080)
  ↓
-WebClient
- ↓
-account-service (8081)
+ ├── account-service (8081)
+ └── event-service (8082)
  ↓
 Repository
 ```
@@ -59,6 +59,7 @@ Endpoints:
 GET /health
 GET /accounts
 GET /accounts/{id}
+GET /events
 ```
 
 ---
@@ -107,6 +108,16 @@ cd event-gateway
 
 Runs:
 localhost:8080
+
+Start event-service:
+
+```bash
+cd event-service
+./mvnw spring-boot:run
+```
+
+Runs:
+localhost:8082
 
 ---
 
