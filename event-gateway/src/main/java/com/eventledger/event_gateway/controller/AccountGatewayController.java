@@ -34,4 +34,9 @@ public class AccountGatewayController {
     public String accountById(@PathVariable Long id) {
         return service.getAccountById(id);
     }
+
+    @GetMapping("/events")
+    public String events() {
+        return service.getEvents();
+    }
 }
